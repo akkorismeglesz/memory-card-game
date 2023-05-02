@@ -1,0 +1,138 @@
+body {
+   min-height: 100% /*100vh*/;
+   min-width: 100vw;
+   margin: 0;
+   /*min-width: 100% / 100vw;
+   vh= viewport height vw= viewport width
+   vw and vh stand for viewport width and viewport height respectively.
+
+   The difference between using width: 100vw instead of width: 100% is that while 100% will make the element fit all the space available, the viewport width has a specific measure, in this case the width of the available screen, including the document margin.
+
+   If you set the style body { margin: 0 }, 100vw should behave the same as 100% (for an element that is a child to body). -> an answer from Stackoverflow*/
+   background-color: #12181f;
+   color: white;
+   overflow: hidden;
+   /*overflow: hidden -> to make non-scrollable the window*/
+ }
+
+ .game {
+   /*position: absolute;
+   top: 42.5%;
+   left: 50%;
+   transform: translate(-50%, -50%);*/
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+ }
+
+h1 {
+   font-size: 40px;
+}
+
+ .controls {
+   display: flex;
+   gap: 60px;
+   margin-bottom: 20px;
+ }
+
+ button {
+   padding: 8px 16px;
+   font-size: 24px;
+   font-weight: 600;
+   border-radius: 10px;
+   background-color: #1130ba;
+   color: white;
+ }
+
+ .stats {
+   font-weight: 600;
+   font-size: 20px;
+ }
+
+ .board-container {
+   position: relative;
+}
+
+.board,
+.win {
+   border-radius: 10px;
+   box-shadow: 0 25px 50px rgb(33 33 33 / 25%);
+   background: linear-gradient(135deg,  #03001e 0%,#585c03 0%,#ceec38 50%, #fdeff9 100%);
+   transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+   backface-visibility: hidden;
+}
+
+.board {
+   padding: 20px;
+   display: grid;
+   grid-template-columns: repeat(4, auto);
+   grid-gap: 20px;
+}
+
+.board-container.flipped .board {
+   transform: rotateY(180deg) rotateZ(50deg);
+}
+
+.board-container.flipped .win {
+   transform: rotateY(0) rotateZ(0);
+}
+
+.card {
+   position: relative;
+   width: 100px;
+   height: 100px;
+}
+
+.card-front,
+.card-back {
+   position: absolute;
+   border-radius: 10px;
+   width: 100%;
+   height: 100%;
+   background: #12181f;
+   transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+   backface-visibility: hidden;
+}
+
+.card-back {
+   transform: rotateY(180deg) rotateZ(50deg);
+   font-size: 28pt;
+   user-select: none;
+   text-align: center;
+   line-height: 100px;
+   background: #FDF8E6;
+}
+
+.card.flipped .card-front {
+   transform: rotateY(180deg) rotateZ(50deg);
+}
+
+.card.flipped .card-back {
+   transform: rotateY(0) rotateZ(0);
+}
+
+.win {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   text-align: center;
+   background: #FDF8E6;
+   transform: rotateY(180deg) rotateZ(50deg);
+}
+
+.win-text {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   font-size: 21pt;
+   font-weight: 600;
+   color: #282A3A;
+}
+
+.highlight {
+   color: #1130ba;
+}
